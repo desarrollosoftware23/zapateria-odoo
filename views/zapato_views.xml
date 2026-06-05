@@ -25,6 +25,7 @@
                         <field name="precio"/>
                         <field name="stock"/>
                         <field name="activo"/>
+                        <field name="subprecio"/>
                     </group>
                 </sheet>
             </form>
