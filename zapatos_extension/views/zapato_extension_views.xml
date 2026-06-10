@@ -1,75 +1,39 @@
 <odoo>
     <record id="view_zapato_form_extension" model="ir.ui.view">
-
-        <!-- CORREGIDO: se quitaron espacios en name="name" y en el contenido -->
         <field name="name">zapatos.zapato.form.extension</field>
-
-        <!-- CORREGIDO: se quitó el espacio antes de zapatos.zapato -->
         <field name="model">zapatos.zapato</field>
-
-        <!-- CORREGIDO: se ordenó el atributo name sin espacios innecesarios -->
         <field name="inherit_id" ref="zapatos.view_zapato_form"/>
-
-        <!-- CORREGIDO: se ordenó type="xml" sin espacios innecesarios -->
         <field name="arch" type="xml">
-
-            <!-- CORREGIDO: se ordenó expr y position sin espacios innecesarios -->
             <xpath expr="//group" position="inside">
-
-                <!-- CORREGIDO: antes estaba Còdigo, debe ser codigo, sin tilde y en minúscula -->
                 <field name="codigo"/>
-
-                <!-- CORREGIDO: antes estaba Marca, debe ser marca, en minúscula -->
                 <field name="marca"/>
-
-                <!-- CORREGIDO: antes estaba Color, debe ser color, en minúscula -->
                 <field name="color"/>
-
-                <!-- CORREGIDO: antes estaba Material, debe ser material, en minúscula -->
                 <field name="material"/>
-
-                <!-- CORREGIDO: antes estaba Stock_minimo, debe ser stock_minimo, en minúscula -->
                 <field name="stock_minimo"/>
 
-                <!-- CORREGIDO: este campo queda como solo lectura porque es calculado -->
+                <!-- LINEA AGREGADA: campo descuento -->
+                <field name="descuento"/>
+
                 <field name="valor_inventario" readonly="1"/>
-
-                <!-- CORREGIDO: antes estaba Descripcion, debe ser descripcion, en minúscula -->
                 <field name="descripcion"/>
-
             </xpath>
         </field>
     </record>
 
     <record id="view_zapato_list_extension" model="ir.ui.view">
-
-        <!-- CORREGIDO: se quitaron espacios en name="name" y en el contenido -->
         <field name="name">zapatos.zapato.list.extension</field>
-
-        <!-- CORREGIDO: se quitó el espacio al inicio y al final de zapatos.zapato -->
         <field name="model">zapatos.zapato</field>
-
-        <!-- CORREGIDO: se ordenó el atributo name sin espacios innecesarios -->
         <field name="inherit_id" ref="zapatos.view_zapato_list"/>
-
-        <!-- CORREGIDO: se ordenó type="xml" sin espacios innecesarios -->
         <field name="arch" type="xml">
-
-            <!-- CORREGIDO: se ordenó xpath sin espacios innecesarios -->
             <xpath expr="//list" position="inside">
-
-                <!-- CORREGIDO: nombre técnico del campo en minúscula -->
                 <field name="codigo"/>
-
-                <!-- CORREGIDO: nombre técnico del campo en minúscula -->
                 <field name="marca"/>
-
-                <!-- CORREGIDO: nombre técnico del campo en minúscula -->
                 <field name="color"/>
 
-                <!-- CORREGIDO: campo calculado para mostrar valor de inventario -->
-                <field name="valor_inventario"/>
+                <!-- LINEA AGREGADA: campo descuento -->
+                <field name="descuento"/>
 
+                <field name="valor_inventario"/>
             </xpath>
         </field>
     </record>
