@@ -1,0 +1,45 @@
+<odoo>
+    <record id="view_transporte_form" model="ir.ui.view">
+        <field name="name">transporte.publico.form</field>
+        <field name="model">transporte.publico</field>
+        <field name="arch" type="xml">
+            <form string="Transporte Público">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="cedula"/>
+                        <field name="destino"/>
+                        <field name="fecha"/>
+                        <field name="tarifa"/>
+                        <field name="tipo"/>
+                        <field name="pasajeros"/>
+                        <field name="total_tarifa"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_transporte_list" model="ir.ui.view">
+        <field name="name">transporte.publico.list</field>
+        <field name="model">transporte.publico</field>
+        <field name="arch" type="xml">
+            <list string="Transporte Público">
+                <field name="name"/>
+                <field name="cedula"/>
+                <field name="destino"/>
+                <field name="fecha"/>
+                <field name="tarifa"/>
+                <field name="tipo"/>
+                <field name="pasajeros"/>
+                <field name="total_tarifa"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_transporte_publico" model="ir.actions.act_window">
+        <field name="name">Transporte Público</field>
+        <field name="res_model">transporte.publico</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_transporte_root" name="Negocio Transporte"/>
+    <menuitem id="menu_transporte" name="Transporte" parent="menu_transporte_root" action="action_transporte_publico"/>
+</odoo>
