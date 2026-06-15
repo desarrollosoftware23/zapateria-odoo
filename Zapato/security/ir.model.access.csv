@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_zapato_base,access.zapato.base,model_zapato_base,base.group_user,1,1,1,1
+access_zapato_categoria,access.zapato.categoria,model_zapato_categoria,base.group_user,1,1,1,1
