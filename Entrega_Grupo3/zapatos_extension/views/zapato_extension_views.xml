@@ -9,8 +9,9 @@
                 <field name="marca"/>
                 <field name="color"/>
                 <field name="material"/>
+                <field name="talla"/>
+                <field name="temporada"/>
                 <field name="stock_minimo"/>
-                <field name="descuento"/>
                 <field name="valor_inventario" readonly="1"/>
                 <field name="descripcion"/>
             </xpath>
@@ -26,7 +27,8 @@
                 <field name="codigo"/>
                 <field name="marca"/>
                 <field name="color"/>
-                <field name="descuento"/>
+                <field name="talla"/>
+                <field name="temporada"/>
                 <field name="valor_inventario"/>
             </xpath>
         </field>

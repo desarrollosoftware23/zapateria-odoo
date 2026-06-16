@@ -1,1 +1,1 @@
-from .import zapato_extension
+from . import zapato_extension
