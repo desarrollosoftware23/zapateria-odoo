@@ -1,0 +1,70 @@
+<odoo>
+    <record id="view_zapato_form_gestion" model="ir.ui.view">
+        <field name="name">zapatos.zapato.form.gestion</field>
+        <field name="model">zapatos.zapato</field>
+        <field name="inherit_id" ref="zapatos.view_zapatos_zapato_form"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//field[@name='stock']" position="attributes">
+                <attribute name="decoration-danger">stock &lt; 10</attribute>
+                <attribute name="decoration-warning">stock &gt;= 10 and stock &lt; 30</attribute>
+                <attribute name="decoration-success">stock &gt;= 30</attribute>
+            </xpath>
+
+            <xpath expr="//group" position="inside">
+                <field name="genero"/>
+                <field name="tipo_cierre"/>
+                <field name="temporada"/>
+                <field name="necesita_reposicion"/>
+            </xpath>
+            
+        </field>
+    </record>
+
+    <record id="view_zapato_list_gestion" model="ir.ui.view">
+        <field name="name">zapatos.zapato.list.gestion</field>
+        <field name="model">zapatos.zapato</field>
+        <field name="inherit_id" ref="zapatos.view_zapatos_zapato_list"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//field[@name='stock']" position="attributes">
+                <attribute name="decoration-danger">stock &lt; 10</attribute>
+                <attribute name="decoration-warning">stock &gt;= 10 and stock &lt; 30</attribute>
+                <attribute name="decoration-success">stock &gt;= 30</attribute>
+            </xpath>
+
+            <xpath expr="//list" position="inside">
+                <field name="genero"/>
+                <field name="temporada"/>
+                <field name="necesita_reposicion" widget="boolean_toggle"/>
+            </xpath>
+            
+        </field>
+    </record>
+
+    <record id="view_zapato_search_gestion" model="ir.ui.view">
+        <field name="name">zapatos.zapato.search.gestion</field>
+        <field name="model">zapatos.zapato</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Zapatos">
+                <field name="name" string="Nombre del Zapato"/>
+                
+                <separator/>
+                
+                <filter string="Necesita Reposición" name="reposicion" domain="[('necesita_reposicion', '=', True)]"/>
+                <filter string="Calzado de Hombre" name="hombre" domain="[('genero', '=', 'hombre')]"/>
+                <filter string="Calzado de Mujer" name="mujer" domain="[('genero', '=', 'mujer')]"/>
+                
+                <separator/>
+                
+                <group expand="0" string="Agrupar Por">
+                    <filter string="Temporada" name="group_by_temporada" context="{'group_by': 'temporada'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="zapatos.action_zapatos_zapato" model="ir.actions.act_window">
+        <field name="search_view_id" ref="view_zapato_search_gestion"/>
+    </record>
+</odoo>
