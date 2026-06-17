@@ -1,0 +1,49 @@
+<odoo>
+    <record id="view_cliente_list" model="ir.ui.view">
+        <field name="name">zapatos.cliente.list</field>
+        <field name="model">zapatos.cliente</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="cedula"/>
+                <field name="telefono"/>
+                <field name="email"/>
+                <field name="fecha_registro"/>
+                <field name="zapato_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_cliente_form" model="ir.ui.view">
+        <field name="name">zapatos.cliente.form</field>
+        <field name="model">zapatos.cliente</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="cedula"/>
+                        <field name="telefono"/>
+                        <field name="email"/>
+                        <field name="direccion"/>
+                        <field name="fecha_registro"/>
+                        <field name="zapato_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_cliente" model="ir.actions.act_window">
+        <field name="name">Clientes</field>
+        <field name="res_model">zapatos.cliente</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_clientes_root" name="Clientes Zapatería" sequence="20"/>
+    <menuitem id="menu_clientes_clientes"
+              name="Registrar Clientes"
+              parent="menu_clientes_root"
+              action="action_cliente"
+              sequence="10"/>
+</odoo>

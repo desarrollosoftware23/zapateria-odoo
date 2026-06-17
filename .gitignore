@@ -1,0 +1,14 @@
+*
+!.gitignore
+!zapatos/
+!zapatos/**
+!zapatos_extension/
+!zapatos_extension/**
+!zapatos_detalle/
+!zapatos_detalle/**
+!zapatos_devoluciones/
+!zapatos_devoluciones/**
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
