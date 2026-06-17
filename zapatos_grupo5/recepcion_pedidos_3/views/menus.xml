@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_recepcion_root"
+              name="Recepción de Pedidos"
+              sequence="10"/>
+
+    <menuitem id="menu_pedido"
+              name="Pedidos"
+              parent="menu_recepcion_root"
+              action="action_pedido"
+              sequence="10"/>
+
+    <menuitem id="menu_recepcion"
+              name="Recepciones"
+              parent="menu_recepcion_root"
+              action="action_recepcion"
+              sequence="20"/>
+
+</odoo>

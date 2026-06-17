@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_recepcion_form" model="ir.ui.view">
+        <field name="name">recepcion.pedido.form</field>
+        <field name="model">recepcion.pedido</field>
+        <field name="arch" type="xml">
+            <form string="Recepción de Pedido">
+                <header>
+                    <button name="accion_registrar" string="Registrar recepción"
+                            type="object" class="btn-primary"
+                            invisible="estado != 'borrador'"/>
+                    <button name="accion_borrador" string="Regresar a borrador"
+                            type="object"
+                            invisible="estado != 'registrado'"/>
+                    <field name="estado" widget="statusbar"
+                           statusbar_visible="borrador,registrado"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group string="Datos del pedido">
+
+
+                            <field name="pedido_id"
+                                   readonly="estado == 'registrado'"/>
+                            <field name="zapato_id"/>
+                            <field name="proveedor"/>
+                            <field name="fecha_pedido"/>
+                            <field name="cantidad_solicitada"/>
+                        </group>
+                        <group string="Datos de la recepción">
+                            <field name="fecha_recepcion"
+                                   readonly="estado == 'registrado'"/>
+                            <field name="cantidad_recibida"
+                                   readonly="estado == 'registrado'"/>
+                            <field name="estado_recepcion"
+                                   widget="badge"
+                                   decoration-success="estado_recepcion == 'completo'"
+                                   decoration-danger="estado_recepcion == 'incompleto'"/>
+                        </group>
+                    </group>
+                    <group string="Observación">
+                        <field name="observacion" nolabel="1"
+                               readonly="estado == 'registrado'"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_recepcion_tree" model="ir.ui.view">
+        <field name="name">recepcion.pedido.tree</field>
+        <field name="model">recepcion.pedido</field>
+        <field name="arch" type="xml">
+            <list string="Recepciones">
+                <field name="name"/>
+                <field name="pedido_id"/>
+                <field name="zapato_id"/>
+                <field name="proveedor"/>
+                <field name="fecha_recepcion"/>
+                <field name="cantidad_solicitada"/>
+                <field name="cantidad_recibida"/>
+                <field name="estado_recepcion"
+                       decoration-success="estado_recepcion == 'completo'"
+                       decoration-danger="estado_recepcion == 'incompleto'"
+                       widget="badge"/>
+                <field name="estado"
+                       decoration-info="estado == 'borrador'"
+                       decoration-success="estado == 'registrado'"
+                       widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_recepcion_search" model="ir.ui.view">
+        <field name="name">recepcion.pedido.search</field>
+        <field name="model">recepcion.pedido</field>
+        <field name="arch" type="xml">
+            <search string="Buscar recepciones">
+                <field name="name"/>
+                <field name="pedido_id"/>
+                <field name="proveedor"/>
+                <filter name="filtro_completo" string="Completos"
+                        domain="[('estado_recepcion', '=', 'completo')]"/>
+                <filter name="filtro_incompleto" string="Incompletos"
+                        domain="[('estado_recepcion', '=', 'incompleto')]"/>
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_estado" string="Estado de recepción"
+                            context="{'group_by': 'estado_recepcion'}"/>
+                    <filter name="group_proveedor" string="Proveedor"
+                            context="{'group_by': 'proveedor'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_recepcion" model="ir.actions.act_window">
+        <field name="name">Recepciones</field>
+        <field name="res_model">recepcion.pedido</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_recepcion_search"/>
+    </record>
+
+</odoo>
