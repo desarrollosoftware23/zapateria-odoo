@@ -14,3 +14,5 @@
 *.pyc
 *.pyo
 *.pyd
+!Grupo_6_modulos/
+!Grupo_6_modulos/**
