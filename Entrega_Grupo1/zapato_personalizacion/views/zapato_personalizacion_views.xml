@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_zapato_personalizacion_list" model="ir.ui.view">
+        <field name="name">zapato.personalizacion.list</field>
+        <field name="model">zapato.personalizacion</field>
+        <field name="arch" type="xml">
+            <list string="Personalizaciones de Zapatos">
+                <field name="name"/>
+                <field name="zapato_id"/>
+                <field name="precio"/>
+                <field name="color"/>
+                <field name="material"/>
+                <field name="talla"/>
+                <field name="calificacion" widget="priority"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_zapato_personalizacion_form" model="ir.ui.view">
+        <field name="name">zapato.personalizacion.form</field>
+        <field name="model">zapato.personalizacion</field>
+        <field name="arch" type="xml">
+            <form string="Personalización de Zapatos">
+                <sheet>
+                    <field name="imagen" widget="image" class="oe_avatar" options="{'size': [94, 94]}"/>
+                    
+                    <div class="oe_title">
+                        <label for="name" string="Nombre de la Personalización"/>
+                        <h1>
+                            <field name="name" placeholder="Iniciales Oro"/>
+                        </h1>
+                        <div class="o_row d-flex align-items-center mt-2">
+                            <span class="me-2" style="font-weight: bold; color: #666666;">Calidad :</span>
+                            <field name="calificacion" widget="priority"/>
+                        </div>
+                    </div>
+
+                    <group>
+                        <group string="Información General">
+                            <field name="zapato_id"/>
+                            <field name="precio"/>
+                        </group>
+                        
+                        <group string="Detalles del Zapato Base">
+                            <field name="color"/>
+                            <field name="material"/>
+                            <field name="talla"/>
+                        </group>
+                    </group>
+
+                    <group string="Notas adicionales">
+                        <field name="description" placeholder="Escribe aquí detalles específicos sobre el pedido del cliente..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_zapato_personalizacion" model="ir.actions.act_window">
+        <field name="name">Personalizaciones de Calzado</field>
+        <field name="res_model">zapato.personalizacion</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_zapato_personalizacion_item"
+              name="Personalizar Zapatos"
+              parent="zapatos.menu_zapatos_root"
+              action="action_zapato_personalizacion"
+              sequence="20"/>
+
+</odoo>

@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_zapato_personalizacion,access.zapato.personalizacion,model_zapato_personalizacion,,1,1,1,1
